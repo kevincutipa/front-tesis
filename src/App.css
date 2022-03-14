@@ -1,38 +1,365 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+
+:root{
+  --blue: #61dafb;
+  /*Dark-Mode-Elements*/
+  --Dark-Blue: hsl(209, 23%, 22%);
+  /*Dark Mode Background*/
+  --Very-Dark-Blue-bg: hsl(207, 26%, 17%);
+  /*(Light Mode Text)*/
+  --Very-Dark-Blue: hsl(200, 15%, 8%);
+  /*Light Mode Input*/
+  --Dark-Gray: hsl(0, 0%, 52%);
+  /*Light Mode Background*/
+  --Very-Light-Gray: hsl(0, 0%, 98%);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito Sans', sans-serif;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.App{
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+.App-link{
+  text-decoration: none;
+  color: var(--Very-Dark-Blue);
+}
+
+body, html{
+  font-size: calc(10px + 1vmin);
+  min-height: 100vh;
+}
+header{
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+/* - Dark Mode Styles - */
+.App.light{
+  background-color: var(--Very-Light-Gray);
+  color: var(--Very-Dark-Blue);
+}
+.App.dark{
+  background-color: var(--Very-Dark-Blue-bg);
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.App.dark .card, .App.dark .search, .App.dark .select-box,
+.App.dark .back-button,.App.dark .light-button, .App.dark nav.navbar{
+  background: var(--Dark-Blue);
+  color: white;
+  border: none;
+  box-shadow: 0px 3px 3px var(--Very-Dark-Blue);
+}
+.App.dark .search:hover{
+  box-shadow: 0px 2px 5px var(--Very-Dark-Blue);
+}
+.App.dark input.search-input{
+  color: white 
+}
+.App.dark p, .App.dark ion-icon{
+  color: white;
+}
+.dark-mode-container{
+  width: 160px;
+  height: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.dark-mode-container button{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-family: 'Nunito Sans', sans-serif;
+  width: 100%;
+  height: 32px;
+  padding: 8px;
+  font-weight: 600;
+  font-size: 1.2em;
+  background: transparent;
+  border: none;
+  cursor:pointer;
+  transition: 0.4s;
+  color: var(--Very-Dark-Blue-bg);
+}
+.dark-mode-container button:hover{
+  text-shadow: 0px 2px 12px var(--Very-Dark-Blue);
+}
+.App.dark .light-button:hover{
+  box-shadow: 0px 1px 3px var(--Very-Dark-Blue);
+}
+/* - END Dark Mode Styles - */
+
+/* - Search Box - */
+.search-filters{
+  width: 100%;
+  height: auto;
+  padding: 16px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search{
+  display: flex;
+  width: 40%;
+  align-items: center;
+  height: 48px;
+  background: white;
+  padding: 8px 16px;
+  padding: 0 1em 0 0;
+  box-shadow: 0px 0px 6px #ccc;
+  border-radius: 5px;
+  color: var(--Very-Dark-Blue);
+  font-family: 'Nunito Sans', sans-serif;
+  transition: 0.4s;
+}
+.search:hover{
+  box-shadow: 0px 2px 5px var(--Dark-Gray);
+}
+ion-icon[name="search-outline"]{
+  color: var(--Dark-Gray);
+  font-size: 1.5em;
+}
+.search-input{
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  outline: none;
+  margin: 0px 8px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  background: none;
+}
+.search ion-icon:first-child{
+  padding: 0 16px;
+  cursor:pointer;
+}
+/* - END Search Box - */
+
+/* - Select Box - */
+.select-box{
+  position: relative;
+  padding: 16px 32px;
+  border-radius: 4px;
+  height: 48px;
+  padding: 8px 16px;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  box-shadow: 0px 0px 4px #ccc;
+  color: var(--Very-Dark-Blue);
+}
+select{
+  color: var(--Very-Dark-Blue);
+}
+.select-box .option:last-child(){
+  border:transparent;
+  border-radius: 0px 0px 4px 4px;
+}
+
+/* - END Select Box - */
+
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  padding: 16px 32px;
+  box-shadow: 0px 4px 8px #ccc;
+  background: white;
+  color: var(--Very-Dark-Blue);
+  margin-bottom: 16px;
+  z-index:10;
+}
+.logo h2{
+  font-size: 1.5em;
+}
+.container-80{
+  width: 95vw;
+  height: auto;
+  margin: 0 auto;
+  padding: 16px;
+}
+.card img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+}
+.card{
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 50% 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px #ccc;
+  overflow: hidden;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.card:hover{
+  transform:translateY(-2px);
+  box-shadow: 0px 6px 8px #777;
+}
+.image-container{
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 8px 8px 0px 0px;
+}
+.data, .details{
+  padding: 16px;
+}
+.data{
+  border-radius: 0px 0px 8px 8px;
+}
+.details{
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.5em;
+}
+.title{
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.light-button{
+  border: 1px solid white;
+  box-shadow: 0px 0px 3px #aaa;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--Dark-Blue);
+  background: var(--Very-Light-Gray);
+  margin: 0px 8px; 
+  padding: 4px 16px;
+  width: auto;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.light-button:hover{
+  box-shadow: 0px 2px 4px #bbb;
+}
+.back-button{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 128px;
+  font-size: 16px;
+  height: auto;
+  padding: 8px;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .App.dark { 
+    background: var(--Very-Dark-Blue-bg); 
+    color:  var(--Very-Light-Gray); 
   }
-  to {
-    transform: rotate(360deg);
+}
+.container-grid{
+  width: 100%;
+  min-width: auto;
+  height: 100%;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-rows: repeat(2, 280px);
+  grid-gap: 64px;
+}
+.container-double{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  align-items: center;
+  width: 100%;
+  height: auto;
+  grid-gap: 48px;
+  padding: 16px 0;
+  justify-content: center;
+}
+.description h1{
+  width: 100%;
+  margin-bottom: 16px;
+  grid-column: 1 / -1;
+}
+.container-double .info p{
+  font-weight: 600;
+  font-size: 16px;
+  padding: 8px 0px;
+}
+.container-double img{
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: fill;
+}
+.container-double .description, .container-double .image{
+  display: grid;
+  grid-template-columns: auto auto;
+  height: 100%;
+}
+.borders{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  grid-column: 1 / -1;
+}
+.borders button{
+  margin: 8px;
+}
+
+@media (prefers-color-scheme: light) {
+  .App.light   { 
+    background: var(--Very-Light-Gray); 
+    color:  var(--Very-Dark-Blue); 
+  }
+}
+@media (min-width: 600px){
+  .card{
+    max-width: 256px;
+  }
+}
+@media (max-width: 400px){
+  .container-grid{
+    width: 100%;
+    min-width: auto;
+    height: 100%;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-rows: repeat(2, 300px);
+    grid-gap: 48px;
+  }  
+  .card{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 50% auto;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px #ccc;
+    overflow: hidden;
+  }
+  .search-filters{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 180px;
+  }
+  .search{
+    width: 100%;
+  }  
+  select{
+    width: 100%;
   }
 }

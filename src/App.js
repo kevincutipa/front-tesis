@@ -19,7 +19,8 @@ class App extends React.Component {
     isFetch: false,
   }
   consultarApi = () =>{
-    const url = "https://restcountries.com/v3.1/all/";
+    const url ="https://web-app-jobs-2022-api.herokuapp.com/api/v1/getJobs?trabajo=ingeniero"
+    //const url = "https://restcountries.com/v3.1/all/";
     fetch(url)
     .then(response => response.json())
     .then(data => {

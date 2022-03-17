@@ -7,16 +7,14 @@ const Card = (props) => {
     return (
         <Link className="App-link" to={`/country/${name}`}>
             <div className="card" title={index}>
-                <div className="image-container">
-                    <img src={flag} alt={name +" flag"} className="image"/>
-                </div>
+                
                 <div className="details">
                     <div className="title">
                         <h2>{name}</h2>
                     </div>
-                    <p>{`Population: ${population}`}</p>
-                    <p>{`Region: ${region}`}</p>
-                    <p>{`Capital: ${capital}`}</p>
+                    <p>{`Ciudad: ${population}`}</p>
+                    <p>{`Compañia: ${region}`}</p>
+                    <p>{`Fecha: ${capital}`}</p>
                 </div>
             </div>
         </Link>

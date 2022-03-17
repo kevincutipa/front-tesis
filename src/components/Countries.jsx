@@ -10,11 +10,20 @@ const Countries = (props) => {
               isFetch && <Card key={`card_${index}`}
                   index={index}
                   borders={countries[index].borders}
-                  flag={countries[index].flags.svg} 
-                  name={countries[index].name.common} 
-                  region={countries[index].region} 
-                  capital={countries[index].capital} 
-                  population={countries[index].population}
+                  //flag={countries[index].pubDate} 
+                  name={countries[index].company} 
+                  population={countries[index].location}
+                  region={countries[index].company} 
+                  capital={countries[index].pubDate} 
+                  
+
+                  //borders={countries[index].borders}
+                  //flag={countries[index].flags.svg} 
+                  //name={countries[index].name.common} 
+                  //population={countries[index].population}
+                  //region={countries[index].region} 
+                  //capital={countries[index].capital} 
+                  
               />
             )
           });

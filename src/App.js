@@ -45,10 +45,10 @@ class App extends React.Component {
   }
 
   datosBusqueda = (termino) => {
-    this.setState({busqueda: termino}, () => {
-      //this.getCountryName(this.state.nombres);
-      this.filterCountries(this.state.paises);
-    })
+    // this.setState({busqueda: termino}, () => {
+    //   //this.getCountryName(this.state.nombres);
+    //   this.filterCountries(this.state.paises);
+    // })
   }
 
   datosFiltro = (continente) => {
@@ -62,6 +62,7 @@ class App extends React.Component {
     //Filter our countries Object list
     const filtered = asArray.filter(([key, value]) => {
     //Check if official name or common name start with our search
+    console.log("values"+ {value})
     let matchName = (
       value.name.common.toLowerCase().startsWith(this.state.busqueda) //||
       //value.name.official.toLowerCase().startsWith(this.state.busqueda)

@@ -1,47 +1,91 @@
-import React from "react";
+// import React from "react";
+import React, { useState } from "react";
 
 import debounce from 'lodash.debounce';
 
-class Buscador extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleChange = this.handleChange.bind(this);
-        this.emitChangeDebounced = debounce(this.emitChange, 10);//250
-        this.busquedaRef = React.createRef();
-    }
+import useGetOferta from '../methods/useGetOferta'
+const Buscador = () => {
 
-    componentWillUnmount() {
-        this.emitChangeDebounced.cancel();
-    }
 
-    render(){
-        return (
-            <form className="search">
-                <ion-icon name="search-outline"></ion-icon>
-                <input className="search-input" type="text"
-                    ref={this.busquedaRef} 
-                    defaultValue={this.props.value}
-                    onChange={this.handleChange}  
-                    placeholder="Busqueda General..."/>
-            </form>
-        )
-    }
+    
+    const initialForm = {
+        artist: ""
+      };
+
+      const handleChange = (e) => {
+        setForm({
+          ...form,
+          [e.target.name]: e.target.defaultValue,
+        });
+      };
+
+
+    const [form, setForm] = useState(initialForm);
+   
+
+    const TaskRegisterForm = async () => {
+    
         
-    handleChange = (e) => {
-        e.preventDefault();
-        this.emitChangeDebounced(e.target.value);
-        console.log(e.target.value);
-
         //Tomamos el valor del input
-        var termino = this.busquedaRef.current.value;
+        // const termino = this.busquedaRef.current.value;
         
-        //Y lo enviamos al componente principal
-        this.props.datosBusqueda(termino);
-    }
+        // console.log('DATO RECIBIO DE LA CAJA DE TEXTO: '+ task.name);
 
-    emitChange(value) {
-        this.props.datosBusqueda(value);
-    }
+        //Y lo enviamos al componente principal
+        //this.props.datosBusqueda(termino);
+        
+        // const ofertaArg = target.value;
+        // this.obtenerListOfertas(ofertaArg);
+
+        // useGetOferta(ofertaArg).then((data)=>{
+        //     console.log("obtenerListOfertas: "+ data)
+        // })
+
+	};
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    
+        
+        console.log("OFERTA A BUSCAR:" + form.artist);
+        //	TaskRegisterForm();
+        // handleSearch(form);
+        // setForm(initialForm);
+        // setIsDisabled(false);
+      };
+
+
+    return (
+		<>
+			
+            <form className="search" onSubmit={handleSubmit} >
+                <ion-icon name="search-outline"></ion-icon>
+                <input className="search-input" 
+                    type="text"
+                   
+                  
+						name="name"
+                        onChange={handleChange}
+                        
+						// defaultValue={task.name}
+                        defaultValue={form.artist}
+						required
+
+        
+                    placeholder="Busqueda General..."/>
+
+                <button type="submit" className="btn btn-primary">
+                    BUSCAR
+				</button>
+
+            </form>
+
+			
+		</>
+	);
+
+    
+    
     
 }
 

@@ -6,6 +6,7 @@ import Header from './components/Header';
 import Countries from './components/Countries';
 import Details from './Details';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import register from './components/Registro';
 
 class App extends React.Component {
   state = {
